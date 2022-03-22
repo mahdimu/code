@@ -1,0 +1,7 @@
+node -v
+
+npm install - g @angular/cli
+
+ng new my-app   
+         note:(if get error)=> steps : 1) run powershell in admin mode 2)Set-ExecutionPolicy RemoteSigned
+ng serve --open
