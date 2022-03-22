@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace CodePackage
 {
+  
     public class Btree
     {
         public Btree left;
@@ -25,26 +26,24 @@ namespace CodePackage
         }
     }
 
-    public class BtreeCheck
+ public class BtreeCheck
     {
+        Stack st = new Stack();
+        Queue q = new Queue();
+
         string childrens = "";
+
         public void ScanChildren(Btree btree)
         {
-            Console.Write(btree.value);
-
+          
+            childrens += btree.value.ToString() + ",";
             if (btree.left != null)
-            {
-                childrens += btree.value.ToString() + ",";
-               // Console.WriteLine("-"+childrens);
-                ScanChildren(btree.left);
-            }
+             ScanChildren(btree.left);
+            
             if (btree.right != null)
-            {
-                childrens += btree.value.ToString() + ",";
-                //Console.WriteLine("-"+childrens);
-                ScanChildren(btree.right);
-            }
-        }
+             ScanChildren(btree.right);
+                    }
+
 
         public string TreeChild(Btree btree)
         {
@@ -55,21 +54,33 @@ namespace CodePackage
             childrens = "";
             ScanChildren(btree.right);
             string right = childrens;
+            Console.Write("left:[");
+            Console.Write(left);
+            Console.Write("] Right:[");
+            Console.Write(right+"]");
 
             if (left == right) return "YES";
-            return "NO";
+            else return "NO";
+        }
+       
+
+     
+
+        public string TraversalofBinaryTree()
+        {
+            Btree b = new Btree(1, new Btree(2, new Btree(4, null, null), new Btree(3, null, null)), new Btree(2, new Btree(4, null, null), new Btree(3, null, null)));
+
+            Queue q = new Queue();
+            
+            return "";
         }
 
 
         public string isSymmetric()
         {
-            Btree b = new Btree(1, new Btree(2, new Btree(4, null, null), new Btree(3, null, null)), new Btree(2, new Btree(4, null, null), new Btree(3, null, null)));
-            return TreeChild(b);
-        }
-
-        public string test()
-        {
-            return "Is Tree is symetric?" + isSymmetric().ToString();
+          Btree b = new Btree(1, new Btree(2, new Btree(4, null, null), new Btree(3, null, null)), new Btree(2, new Btree(4, null, null), new Btree(3, null, null)));
+          return TreeChild(b);
+          
         }
     }
 }
